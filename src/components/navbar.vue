@@ -1,8 +1,8 @@
 <template>
 
   <v-app-bar app  id="app-bar" style="background-color: #5c5ee8">
-    <v-app-bar-nav-icon @click.stop="drawer = !drawer" v-if="auth" style="background-color: bisque"></v-app-bar-nav-icon>
-    <v-app-bar-title style="color: gainsboro">AdvocateV</v-app-bar-title>
+    <v-app-bar-nav-icon @click.stop="drawer = !drawer" v-if="auth" style="background-color: bisque; margin-left: 20px"></v-app-bar-nav-icon>
+    <v-app-bar-title style="color: gainsboro"><router-link class="root-icon" to="/">AdvocateV</router-link></v-app-bar-title>
 
     <v-icon style="color: bisque">mdi-rocket</v-icon>
 
@@ -93,5 +93,13 @@ export default {
 <style scoped>
 .route-links{
   color: white
+}
+
+a{
+  text-decoration: none!important;
+}
+
+.root-icon{
+  color: bisque!important;
 }
 </style>

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import CaseForm from "@/views/CaseForm";
 import Login from "@/views/Login";
+import CaseDetail from "@/views/CaseDetail";
 import  store from "../store";
 
 const routes = [
@@ -20,6 +21,12 @@ const routes = [
         path: "/case-form",
         name: "CaseForm",
         component: CaseForm,
+        meta: {requiresAuth: true},
+    },
+    {
+        path: "/case-detail",
+        name: "CaseDetail",
+        component: CaseDetail,
         meta: {requiresAuth: true},
     },
     {

@@ -122,7 +122,7 @@
 
 
 
-        
+
     </div>
     </div>
   </div>
@@ -169,15 +169,26 @@ export default {
             .then( response =>{
               this.$store.dispatch('updateHome')
               // this.$store.dispatch('updateList')
-              this.$swal('Kayit Basarili');
+              this.$swal({
+                position: 'center',
+                icon: 'success',
+                title: 'Kayit Basarili!',
+                showConfirmButton: false,
+                timer: 1500
+              });
               console.log(response)
-
 
             }, error => {
               console.log(error);
             })
       }else{
-        this.$swal('Gerekli Alanlari Doldurunuz, En az bir davali,davaci adi, ve dava numarasi girilmelidir!');
+        this.$swal({
+          position: 'center',
+              icon: 'error',
+            title: 'Gerekli Alanlari Doldurunuz, En az bir davali,davaci adi, ve dava numarasi girilmelidir!',
+            showConfirmButton: true,
+            timer: 2500
+        });
       }
 
     },

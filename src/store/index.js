@@ -7,6 +7,7 @@ export default createStore({
         access_token: localStorage.getItem('access_token') ?? null,
         homePage: '',
         caseList: '',
+        caseDetail: '',
     },
     mutations: {
         loginUser(state,data){
@@ -27,6 +28,9 @@ export default createStore({
         updateList(state,data){
             return state.caseList = data;
         },
+        updateCaseDetail(state,data){
+            return state.caseDetail = data;
+        },
     },
     getters:{
         auth(state){
@@ -40,6 +44,9 @@ export default createStore({
         },
         getCaseList(state){
             return state.caseList;
+        },
+        getCaseDetail(state){
+            return state.caseDetail;
         },
     },
     actions: {
@@ -68,6 +75,12 @@ export default createStore({
         async updateList({commit}) {
             await apiService.get('case/all').then(response => {
                 return commit('updateList', response.data);
+            });
+        },
+
+        async updateCaseDetail({commit}, caseId) {
+            await apiService.get('case/detail/' + caseId).then(response => {
+                return commit('updateCaseDetail', response.data);
             });
         },
 

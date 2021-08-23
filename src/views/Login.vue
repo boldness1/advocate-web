@@ -43,13 +43,29 @@ export default {
 
       await this.$store.dispatch('loginUser', login_info).then( response => {
         if (response.data.success && response.data.access_token ) {
-          this.$swal('Giris basarili!!!');
+          this.$swal(
+              {
+                position: 'center',
+                icon: 'success',
+                title: 'Giris Basarili!',
+                showConfirmButton: false,
+                timer: 1500
+              }
+          );
           this.$store.commit('loginUser', response.data)
           apiService.setHeader(response.data.access_token)
           this.$router.push('/');
         } else {
           // this.$store.commit('logout_user')
-          this.$swal('Kullanici BIlgileri Hatali!');
+          this.$swal(
+              {
+                position: 'center',
+                icon: 'error',
+                title: 'Kullanici bilgileri hatali!',
+                showConfirmButton: false,
+                timer: 1500
+              }
+          );
         }
       })
     },

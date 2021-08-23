@@ -4,43 +4,58 @@
       <input class="form-control w-25" id="search" placeholder="Ara.." v-model="search">
     </div>
     <div v-if="filteredList !== undefined && filteredList.length > 0">
-      <div class="card mb-4  " v-for="dava in filteredList" :key="dava.id">
+      <div class="card mb-4" v-for="dava in filteredList" :key="dava.id">
         <div class="form-group">
-          <div class="d-flex flex-row justify-content-between align-items-center">
-            <div class="d-flex flex-row justify-content-start">
-              <span class="p-3"> Dava No: </span>
-              <span class="p-3"> {{ dava.case_no }}</span>
+          <div class="d-flex flex-row justify-content-between align-items-center item-header">
+            <div class="d-flex flex-row justify-content-end align-items-center start-items">
+              <div class="d-flex flex-row justify-content-start">
+                <span class="p-3" style="color: #5c5ee8; font-weight: bold"> Dava No: </span>
+                <span class="p-3" style="font-weight: bold"> {{ dava.case_no }}</span>
+              </div>
+
             </div>
-            <a class="collapse-btn" data-toggle="collapse" :href="'#collapse' + dava.case_no" role="button" aria-expanded="false" :aria-controls="'collapse' + dava.case_no">
-              <font-awesome-icon icon="user-secret"/>
-            </a>
+            <div class="end-items">
+              <a class="collapse-btn" data-toggle="collapse" :href="'#collapse' + dava.case_no" role="button" aria-expanded="false" :aria-controls="'collapse' + dava.case_no">
+                <font-awesome-icon icon="arrow-down"/>
+              </a>
+            </div>
           </div>
           <div class="collapse" :id="'collapse' + dava.case_no">
-            <hr>
-          <div class="card-body">
+
+          <div class="card-body item-body">
             <div class="d-flex flex-row justify-content-start">
-              <span class="p-3"> Bölge: </span>
+              <span class="p-3 input-header"> Bölge: </span>
               <span class="p-3">  {{ dava.location }} </span>
             </div>
 
             <div class="d-flex flex-row justify-content-start">
-              <span class="p-3"> Davali: </span>
+              <span class="p-3 input-header"> Davali: </span>
               <span class="p-3"> {{ dava.Defendant.name }}</span>
             </div>
 
             <div class="d-flex flex-row justify-content-start">
-              <span class="p-3"> Davaci: </span>
+              <span class="p-3 input-header"> Davaci: </span>
               <span class="p-3"> {{ dava.Prosecutor.name }}</span>
             </div>
 
             <div class="d-flex flex-row justify-content-start">
-              <span class="p-3"> Hukum: </span>
+              <span class="p-3 input-header"> Hukum: </span>
               <span class="p-3"> {{ dava.hukum }}</span>
             </div>
 
             <div class="d-flex flex-row justify-content-start">
-              <span class="p-3"> Tarih: </span>
+              <span class="p-3 input-header"> Tarih: </span>
               <span class="p-3"> {{ getTime(dava.case_date)}}</span>
+            </div>
+
+
+            <div clas="d-flex flex-row justify-content-end">
+
+              <button class="d-flex justify-content-center w-25 btn" style="background-color: #5c5ee8; margin-right: 30px" @click="redirectDetail(dava.id)">
+                Detay
+              </button>
+
+
             </div>
 
 
@@ -76,6 +91,10 @@ export default {
   methods:{
     getTime(date){
       return moment(date).format('DD-MM-YYYY')
+    },
+    redirectDetail(id){
+
+      this.$router.push({ name: 'CaseDetail', params: { id: id } })
     }
   },
   computed: {
@@ -99,6 +118,22 @@ export default {
 
 .collapse-btn{
   margin-right: 30px;
+}
+
+.item-body{
+  background-color: bisque;
+}
+
+.item-header{
+  background-color:  #B4A2AE;
+}
+
+.form-group{
+  margin-bottom: 0!important;
+}
+
+.input-header{
+  color: #5c5ee8;
 }
 
 </style>
