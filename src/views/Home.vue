@@ -125,7 +125,7 @@ export default {
   name: 'Home',
   async created() {
     await this.$store.dispatch('updateHome');
-    console.log(this.cases.todayCases)
+
   },
   computed: {
     cases() {

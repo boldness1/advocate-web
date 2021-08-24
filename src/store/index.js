@@ -84,6 +84,12 @@ export default createStore({
             });
         },
 
+        async editCase({commit}, caseData) {
+            await apiService.post('case/update',{params: {case_data: caseData}}).then(response => {
+                return commit('updateCaseDetail', response.data);
+            });
+        },
+
     },
     modules: {
 

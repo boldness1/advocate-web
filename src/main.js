@@ -18,7 +18,8 @@ library.add(faArrowDown)
 
 
 
-apiService.init('https://serv.advocatev.com/');
+// apiService.init('https://serv.advocatev.com/');
+apiService.init('http://localhost:3000/');
 
 const app = createApp(App)
 app.use(router)

@@ -17,7 +17,7 @@
 
         <div class="mb-3">
           <label class="form-label" for="case_date">Dava Tarihi:</label>
-          <input class="form-control" type="date" id="case_date" name="case_date" v-model="case_data.case_date">
+          <input class="form-control" type="datetime-local" id="case_date" name="case_date" v-model="case_data.case_date">
         </div>
       </div>
 
@@ -176,7 +176,7 @@ export default {
                 showConfirmButton: false,
                 timer: 1500
               });
-              console.log(response)
+             return response;
 
             }, error => {
               console.log(error);

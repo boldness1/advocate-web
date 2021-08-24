@@ -73,7 +73,7 @@
 <script>
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import moment from "moment";
-console.log(moment)
+
 
 export default {
   name: "List",
