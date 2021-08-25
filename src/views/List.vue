@@ -15,12 +15,12 @@
 
             </div>
             <div class="end-items">
-              <a class="collapse-btn" data-toggle="collapse" :href="'#collapse' + dava.case_no" role="button" aria-expanded="false" :aria-controls="'collapse' + dava.case_no">
+              <a class="collapse-btn" data-toggle="collapse" :href="'#collapse' + dava.id" role="button" aria-expanded="false" :aria-controls="'collapse' + dava.id">
                 <font-awesome-icon icon="arrow-down"/>
               </a>
             </div>
           </div>
-          <div class="collapse" :id="'collapse' + dava.case_no">
+          <div class="collapse" :id="'collapse' + dava.id">
 
           <div class="card-body item-body">
             <div class="d-flex flex-row justify-content-start">
@@ -90,7 +90,10 @@ export default {
   },
   methods:{
     getTime(date){
-      return moment(date).format('DD-MM-YYYY')
+      if(date !== null)
+      return moment(date).format('DD-MM-YYYY - hh:mm')
+
+      return '';
     },
     redirectDetail(id){
 
@@ -102,7 +105,9 @@ export default {
     filteredList() {
       if (this.cases.length > 0)
         return this.cases.filter(dava => {
-          return dava.Defendant.name.toLowerCase().includes(this.search.toLowerCase()) || dava.Prosecutor.name.toLowerCase().includes(this.search.toLowerCase());
+          return dava.Defendant.name.toLowerCase().includes(this.search.toLowerCase()) ||
+              dava.Prosecutor.name.toLowerCase().includes(this.search.toLowerCase()) ||
+              dava.case_no.includes(this.search.toLowerCase());
         })
     },
   },

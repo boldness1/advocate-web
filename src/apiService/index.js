@@ -17,6 +17,7 @@ const ApiService = {
         // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
         axios.defaults.headers.common["ACCESS_TOKEN"] = store.getters.getUserAccessToken;
         axios.defaults.headers.common["API_KEY"] = api_key;
+        axios.defaults.headers.common["APP-CLIENT"] = 'WEB-CLIENT';
     },
 
     removeHeader() {

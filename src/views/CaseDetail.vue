@@ -26,7 +26,7 @@
            <label for="dateinp" class="detail-header form-label" style="color: bisque">
              Dava Tarihi:
            </label>
-            <input id="dateinp" class="form-control inp-control" type="datetime-local" :disabled="modify" v-model="caseDate" style="color: bisque">
+            <input id="dateinp" class="form-control inp-control" type="datetime-local" :disabled="modify"   v-model="date"   style="color: bisque">
           </div>
         </div>
 
@@ -173,16 +173,19 @@ export default {
       modify: true,
       formatted: '',
       case_data: {},
+      date: ''
     }
   },
   async created() {
 
     this.caseId = await this.$route.params.id;
     await this.$store.dispatch('updateCaseDetail', this.caseId)
+    this.date = this.caseDate;
 
   },
   methods: {
    async updateCase(caseDetail) {
+     caseDetail.case_date = this.date;
       await this.$store.dispatch('editCase', caseDetail).then( response =>{
         this.$swal({
           position: 'center',
@@ -204,7 +207,11 @@ export default {
       if(isNaN(this.caseDetail.Prosecutor.phone_number) ){
         this.caseDetail.Prosecutor.phone_number = this.caseDetail.Prosecutor.phone_number.replace(/[a-zA-Z ]/g, '')
       }
-    }
+    },
+    setDateChanged(date){
+     console.log(date)
+     this.caseDetail.case_date = date;
+    },
 
   },
   computed: {
@@ -213,7 +220,7 @@ export default {
     },
     caseDate() {
       let formatted = null;
-      if (this.$store.getters.getCaseDetail.case_date !== undefined) {
+      if (this.$store.getters.getCaseDetail.case_date !== undefined && this.$store.getters.getCaseDetail.case_date !== null) {
         let date = this.$store.getters.getCaseDetail.case_date;
         let splited = date.split(':');
         formatted = splited[0] + ':' + splited[1]

@@ -27,11 +27,11 @@
                   <span class="p-3"> Dava No: </span>
                   <span class="p-3"> {{ dava.case_no }}</span>
                 </div>
-                <a class="collapse-btn" data-toggle="collapse" :href="'#collapse' + dava.case_no" role="button" aria-expanded="false" :aria-controls="'collapse' + dava.case_no">
+                <a class="collapse-btn" data-toggle="collapse" :href="'#collapse' + dava.id" role="button" aria-expanded="false" :aria-controls="'collapse' + dava.id">
                   <font-awesome-icon icon="arrow-down"/>
                 </a>
               </div>
-              <div class="collapse" :id="'collapse' + dava.case_no">
+              <div class="collapse" :id="'collapse' + dava.id">
                 <hr>
                 <div class="card-body">
                   <div class="d-flex flex-row justify-content-start">
@@ -82,11 +82,11 @@
                   <span class="p-3"> Dava No: </span>
                   <span class="p-3"> {{ dava.case_no }}</span>
                 </div>
-                <a class="collapse-btn" data-toggle="collapse" :href="'#collapse' + dava.case_no" role="button" aria-expanded="false" :aria-controls="'collapse' + dava.case_no">
+                <a class="collapse-btn" data-toggle="collapse" :href="'#collapse' + dava.id" role="button" aria-expanded="false" :aria-controls="'collapse' + dava.id">
                   <font-awesome-icon icon="arrow-down"/>
                 </a>
               </div>
-              <div class="collapse" :id="'collapse' + dava.case_no">
+              <div class="collapse" :id="'collapse' + dava.id">
                 <hr>
                 <div class="card-body">
                   <div class="d-flex flex-row justify-content-start">
